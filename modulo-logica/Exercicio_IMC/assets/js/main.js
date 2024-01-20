@@ -49,10 +49,11 @@ function setResultado(resultado, status) {
 
     const p = criaP();
     p.innerHTML = resultado;
-    if (status === false) {
-        p.classList.add('pesso-ruim')
-    } else if(status === true)  {
-        p.classList.add('pesso-bom')
-    }
+    
+    // if (status === false) {
+    //     p.classList.add('pesso-ruim')
+    // } else if(status === true)  {
+    //     p.classList.add('pesso-bom')
+    // }
     resultadoImc.appendChild(p)
 }
