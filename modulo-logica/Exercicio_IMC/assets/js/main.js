@@ -11,27 +11,28 @@ form.addEventListener('submit', function (e) {
     const Altura = Number(inputAltura.value);
 
     if (!Peso || !Altura) {
-        setResultado('peso ou altura inválido', false);
+        setResultado(`Peso ou altura inválido.`, false);
         return;
 
     }
 
-    const IMC = Peso / (Altura * Altura)
+    const IMC = Peso / (Altura * Altura);
+    const IMCFORMAT = IMC.toFixed(1);
 
     if (IMC < 17) {
-        setResultado('Muito abaixo do peso', false);
+        setResultado(`Seu IMC é de ${IMCFORMAT}, Muito abaixo do peso.`, false);
     } else if (IMC >= 17 && IMC < 18.5) {
-        setResultado('Abaixo do peso', false);
+        setResultado(`Seu IMC é de ${IMCFORMAT}, Abaixo do peso.`, false);
     } else if (IMC >= 18.5 && IMC < 25) {
-        setResultado('Peso normal', true);
+        setResultado(`Seu IMC é de ${IMCFORMAT}, Peso normal.`, true);
     } else if (IMC >= 25 && IMC < 30) {
-        setResultado('Acima do peso', false);
+        setResultado(`Seu IMC é de ${IMCFORMAT}, Acima do peso.`, false);
     } else if (IMC >= 30 && IMC < 35) {
-        setResultado('Obesidade grau I', false);
+        setResultado(`Seu IMC é de ${IMCFORMAT}, Obesidade grau I.`, false);
     } else if (IMC >= 35 && IMC <= 40) {
-        setResultado('Obesidade grau II', false);
+        setResultado(`Seu IMC é de ${IMCFORMAT}, Obesidade grau II.`, false);
     } else if (IMC > 40) {
-        setResultado('Obesidade grau III', false);
+        setResultado(`Seu IMC é de ${IMCFORMAT}, Obesidade grau III.`, false);
     }
     console.log(IMC);
 })
@@ -41,6 +42,7 @@ function criaP() {
     return paragrafo;
 }
 
+
 function setResultado(resultado, status) {
     const resultadoImc = document.querySelector('#resultado');
     resultadoImc.innerHTML = '';
@@ -49,7 +51,7 @@ function setResultado(resultado, status) {
     p.innerHTML = resultado;
     if (status === false) {
         p.classList.add('pesso-ruim')
-    } else if (status === true) {
+    } else if(status === true)  {
         p.classList.add('pesso-bom')
     }
     resultadoImc.appendChild(p)
