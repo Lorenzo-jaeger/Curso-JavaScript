@@ -1,10 +1,11 @@
-const pessoa ={
-    nome: "pedro",
-    sobrenome: "carvalho",
-    idade: 30,
-    endereco: {
-        rua: "Av. Assis Brasil",
-        numero: 218,
-    }
+//estrutura padrao 
+for (let i = 0; i <= 50; i++) {
+    const par = i % 2 === 0 ? 'par' : 'impar';
+    console.log(i, par);
 }
 
+const names = ['lorenzo', 'laura', 'luana', 'lucas'];
+
+for (let i = 0; i < names.length; i++) {
+    console.log(i, names[i]);
+}
