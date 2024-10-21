@@ -1,42 +1,42 @@
-//captura de movimento de submit do formulario
+// Captura o evento de submit do formulário
 const form = document.querySelector('#form');
 
 form.addEventListener('submit', function (e) {
-    e.preventDefault();
+    e.preventDefault(); // Evita o envio padrão do formulário
 
-    const inputNumum = e.target.querySelector('#num1')
-    const inputNumdois = e.target.querySelector('#num2')
+    const inputNumum = e.target.querySelector('#num1');
+    const inputNumdois = e.target.querySelector('#num2');
 
     const Numum = Number(inputNumum.value);
     const Numdois = Number(inputNumdois.value);
 
-    if (!Numum || !Numdois) {
-        setResultado(`Números inválidos.`, false);
+    // Verifica se os números são válidos
+    if (isNaN(Numum) || isNaN(Numdois)) {
+        setResultado(`Números inválidos.`);
         return;
     }
 
+    // Função que compara os números e exibe o resultado
+    const maior = Numum > Numdois ? Numum : Numdois;
+    const mensagem = Numum === Numdois 
+        ? 'Os números são iguais.' 
+        : `O maior número é: ${maior}`;
 
-    if (Numum > Numdois) {
-        setResultado(`o número 1 : ${Numum} é maior que o número 2 : ${Numdois}.`);
-    } else if (Numum < Numdois) {
-        setResultado(`o número 2 : ${Numdois} é maior que o número 1 : ${Numum}.`);
-    } else if (Numum === Numdois) {
-        setResultado('números iguais.');
-    } 
-})
+    setResultado(mensagem);
+});
 
+// Função para criar o parágrafo onde o resultado será exibido
 function criaP() {
     const paragrafo = document.createElement('p');
     return paragrafo;
 }
 
-
+// Função para exibir o resultado na tela
 function setResultado(resultado) {
-    const resultadoImc = document.querySelector('#resultado');
-    resultadoImc.innerHTML = '';
+    const resultadoDiv = document.querySelector('#resultado');
+    resultadoDiv.innerHTML = ''; // Limpa o conteúdo anterior
 
-    const p = criaP();
+    const p = criaP(); 
     p.innerHTML = resultado;
-    
-    resultadoImc.appendChild(p)
+    resultadoDiv.appendChild(p); // Adiciona o parágrafo ao div de resultado
 }
